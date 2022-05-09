@@ -193,47 +193,6 @@ const userSchema = new Schema(
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
-npx create-react-app---> client
-├──PUBLIC
-│   │── img
-│   └──index.html
-├──SRC
-│  ├──index.js(import react and reactDOM--> .render(<div>hola mundo</div>, document.getElementById('root')))
-│  ├──App.jsx(import react and create App function,  )
-│  ├──COMPONENTS
-│  │   ├──Navbar.js
-│  │   ├──
-│  └──
-│   
-│
----
-
-
 express-generator/-->server
 ├── app.js
 ├── package.json
@@ -274,3 +233,44 @@ express-generator/-->server
     └── www
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+npx create-react-app---> client
+├──PUBLIC
+│   │── img
+│   └──index.html
+├──SRC
+│  ├──index.js(import react and reactDOM--> .render(<div>hola mundo</div>, document.getElementById('root')))
+│  ├──App.jsx(import react and create App function,  )
+│  ├──COMPONENTS
+│  │   ├──Navbar.js
+│  │   ├──
+│  └──
+│   
+│
+---
