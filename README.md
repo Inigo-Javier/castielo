@@ -1,4 +1,5 @@
 markdown open preview:
+
 AUTH /api/auth/
 
 |Method      |	URL        |	Description     |
@@ -132,62 +133,6 @@ const userSchema = new Schema(
     timestamps: true,
   }
 );
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -232,35 +177,7 @@ express-generator/-->server
     ├── seeds.js
     └── www
 
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
-npx create-react-app---> client
+npx create-react-app
 ├──PUBLIC
 │   │── img
 │   └──index.html
@@ -273,4 +190,3 @@ npx create-react-app---> client
 │  └──
 │   
 │
----
