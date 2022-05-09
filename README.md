@@ -9,24 +9,26 @@ AUTH /api/auth/
 |POST	       |  /logout    |Logout            |
 | GET        |	/verify	   |Authenticateds    |
 
-USER /api/user
-
-| Method   |  URL       | Description       |
-|----------|:-----------|:-----------------:|
-|   GET    | /          | Users             |
-|   PUT    | /:id/edit  | User Profile Page |
-|          |            |                   |
 
 PLACES /api/places
 
 | Method |  URL          | Description       |
 |--------|:--------------|:-----------------:|
 |  GET   | /             |Places             |
-|  POST  | /create       |Create Places      |
-|  PUT   | /:id/edit     |Delete profile POST|
-|  DELETE| /:id/delete   |Matches List       |
-|  PUT   | /:id/like ?   |Create Match       |
-|  PUT   | /:id/dislike ?| Create Match Form |
+|  POST  | /create       |Create Place       |
+|  PUT   | /:id/edit     |Edit place         |
+|  DELETE| /:id/delete   |Delete place       |
+
+
+COMMENTS /api/comment
+
+| Method |  URL          | Description       |
+|--------|:--------------|:-----------------:|
+|  GET   | /             |Comments           |
+|  POST  | /create       |Create Comment     |
+|  PUT   | /:id/edit     |Edit comment       |
+|  DELETE| /:id/delete   |Delete Comment     |
+
 
 
 especificación MODELOS:
@@ -65,10 +67,10 @@ const placesSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
-        opinion: {
+        comments: [{
             type: Schema.Types.ObjectId,
             ref: 'Comments'
-        }
+        }]
       },     
     {
         timestamps: true
@@ -88,6 +90,11 @@ const commentSchema = new Schema(
         owner: {
             type: Schema.Types.ObjectId,
             ref: 'User'
+        }, 
+        rating: {
+          type: Number,
+          min: 0,
+          max: 5
         }
     },
     {
