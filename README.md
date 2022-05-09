@@ -140,11 +140,10 @@ const userSchema = new Schema(
     timestamps: true,
   }
 );
+```
 
 
-
-
-
+```
 express-generator/-->server
 ├── app.js
 ├── package.json
@@ -184,16 +183,4 @@ express-generator/-->server
     ├── seeds.js
     └── www
 
-npx create-react-app
-├──PUBLIC
-│   │── img
-│   └──index.html
-├──SRC
-│  ├──index.js(import react and reactDOM--> .render(<div>hola mundo</div>, document.getElementById('root')))
-│  ├──App.jsx(import react and create App function,  )
-│  ├──COMPONENTS
-│  │   ├──Navbar.js
-│  │   ├──
-│  └──
-│   
-│
+```
