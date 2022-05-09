@@ -12,33 +12,71 @@ markdown open preview:
 
 
 
+AUTH /api/auth/
+
+|Method      |	URL        |	Description     |
+|------------|:------------|:----------------:|
+|GET         |	/signup	   |Signup            |
+|POST        |	/signup	   |Signup POST       |
+|GET         |	/login	   |Register Form POST|
+|POST        |	/login	   |Login Render      |
+|POST	       |  /logout    |Logout            |
+
+
+USER /api/user
+
+| Method   |  URL       | Description       |
+|----------|:-----------|:-----------------:|
+|   GET    | /          | Users             |
+|   PUT    | /:id/edit  | User Profile Page |
+|          |            |                   |
+
+PLACES /api/places
+
+| Method |  URL          | Description       |
+|--------|:--------------|:-----------------:|
+|  GET   | /             |Places             |
+|  POST  | /create       |Create Places      |
+|  PUT   | /:id/edit     |Delete profile POST|
+|  DELETE| /:id/delete   |Matches List       |
+|  GET   | /:id/like ?   |Create Match       |
+|  POST  | /:id/dislike ?| Create Match Form |
+
 
 
 
 
 especificación MODELOS:
 ```javascript
-const castilloSchema = new Schema(
+const placesSchema = new Schema(
     {
         title: {
             type: String,
             required: [true, 'El nombre es obligatorio']
         },
+        imageUrl: {
+              type: String,
+              required: [true, 'La imagen es obligatoria'],
+        },
         description: {
+
             type: String,
             required: [true, 'La descripción es obligatoria'],
             minlength: [20, 'La descripción debe tener min. 20 caracteres']
+            enum: ['vineyard', 'historic building','landscapes']
         },
-              
-        imageUrl: {
-            type: String,
-            required: [true, 'La imagen es obligatoria'],
-        },
-        author: [{                                  
-        type: Schema.Types.ObjectId,
-        ref: 'User'                             
-    }],
-    },
+        address: {
+            city: String,
+            country: String,
+            address: String,
+            location: {
+            type: {
+                    type: String
+                },
+                coordinates: [Number],
+            }
+        }
+      },     
     {
         timestamps: true
     }
@@ -47,34 +85,57 @@ const castilloSchema = new Schema(
 ```
 
 ```javascript
-const placeSchema = new Schema(
-  {
-    name: {
-      type: String,
+const commentSchema = new Schema(
+    {
+        description: {
+            type: String,
+            maxlength: [300, 'Cannot exceed 300 characters'],
+
+        },
+        owner: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+
     },
-    type: { 
-      type: String, 
-      enum: ['coffee-shop', 'bookstore']
-    },
-    location:{
-      lat: Number,
-      lng: Number
+    {
+        timestamps: true
     }
-  },
-  {    
-    timestamps: true,
-  }
-);
+
+)
+
 ```
+
 
 ```javascript
 const userSchema = new Schema(
   {
     username: {
       type: String,
-      unique:true
+      trim: true,
+      unique: true,
+      required: [true, 'Name is required']
     },
-    password: String,
+    image: {
+      type: String,
+      default: 'https://i.stack.imgur.com/l60Hf.png'
+      },
+    email: {
+      type: String,
+      required: [true, 'Email is required'],
+      unique: true,
+      lowercase: true,
+      trim: true
+    },
+    password: {
+      type: String,
+      required: [true, 'Password is required']
+    },
+    role: {
+      type: String,
+      enum: ['ADMIN', 'USER'],
+      default: 'USER'
+    },
   },
   {
     
@@ -82,6 +143,89 @@ const userSchema = new Schema(
   }
 );
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 npx create-react-app---> client
