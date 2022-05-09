@@ -1,27 +1,12 @@
 markdown open preview:
-
-| Endpoints     | modelos       | URLs de cliente 
-| ------------- |:-------------:| -------------:        |
-| /             |    user       | /inicio               |
-| / website     |    places     | /lugares              |
-| /api/places   |    castillo   | /localización         |
-| /api/maps     |               | /proyecto             |
-|               |               | /un poco de historia  |
-|               |               | /registro             |
-|               |               |                       |
-
-
-
 AUTH /api/auth/
 
 |Method      |	URL        |	Description     |
 |------------|:------------|:----------------:|
-|GET         |	/signup	   |Signup            |
-|POST        |	/signup	   |Signup POST       |
-|GET         |	/login	   |Register Form POST|
-|POST        |	/login	   |Login Render      |
+|POST        |	/signup	   |Signup            |
+|POST        |	/login	   |Register Form POST|
 |POST	       |  /logout    |Logout            |
-
+| GET        |	/verify	   |Authenticateds    |
 
 USER /api/user
 
@@ -39,11 +24,8 @@ PLACES /api/places
 |  POST  | /create       |Create Places      |
 |  PUT   | /:id/edit     |Delete profile POST|
 |  DELETE| /:id/delete   |Matches List       |
-|  GET   | /:id/like ?   |Create Match       |
-|  POST  | /:id/dislike ?| Create Match Form |
-
-
-
+|  PUT   | /:id/like ?   |Create Match       |
+|  PUT   | /:id/dislike ?| Create Match Form |
 
 
 especificación MODELOS:
@@ -57,6 +39,8 @@ const placesSchema = new Schema(
         imageUrl: {
               type: String,
               required: [true, 'La imagen es obligatoria'],
+              default: 'https://i.imgur.com/Itw5P5a.jpeg',
+
         },
         description: {
 
@@ -75,6 +59,14 @@ const placesSchema = new Schema(
                 },
                 coordinates: [Number],
             }
+        },
+        owner: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        opinion: {
+            type: Schema.Types.ObjectId,
+            ref: 'Comments'
         }
       },     
     {
@@ -96,12 +88,10 @@ const commentSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'User'
         }
-
     },
     {
         timestamps: true
     }
-
 )
 
 ```
